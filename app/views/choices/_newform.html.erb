@@ -1,0 +1,41 @@
+<%= form_tag(new_choice_path) do %>
+  <% if @crowdy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@crowdy.errors.count, "error") %> prohibited this crowdy from being saved:</h2>
+
+      <ul>
+      <% @crowdy.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= label :name, "Enter a name for your crowdy (you're the only Crowdster who will see this!')" %><br />
+    <%= text_field :crowdy, :name %>
+  </div>
+  <div class="field">
+    <%= label :title, "Enter a title for your crowdy -- this is what other Crowdsters will see" %><br />
+    <%= text_field :crowdy, :title %>
+  </div>
+  <div class="field">
+    <%= label :question %><br />
+    <%= text_area :crowdy, :question %>
+  </div>
+  <div class="field">
+    <%= label :desired_crowd_choices, "How many Crowdsters' input would you like?" %><br />
+    <%= text_field :crowdy, :desired_crowd_choices %>
+  </div>
+  <div class="field">
+    <%= label :title, "A title for the first choice" %><br />
+    <%= text_field :choice, :title %>
+  </div>
+  <div class="field">
+    <%= c.label (:imgurl, "Image URL (optional)") %><br />
+    <%= c.text_field :choice, :imgurl %>
+  </div>
+  <div class="actions">
+    <%= submit %>
+  </div>
+<% end %>
+
