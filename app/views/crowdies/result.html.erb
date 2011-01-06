@@ -1,0 +1,29 @@
+<p id="notice"><%= params[:notice] %></p>
+
+<h2 class="crowdytitle">
+  <%= @crowdy.title %>
+</h2>
+
+<p class="crowdyq">
+  <b>Question:</b>
+  <%= @crowdy.question %>
+</p>
+
+<% @crowdy.choices.each do |choice| %>
+  <div class="crowdychoice">
+    <img src=<%= choice.imgurl %> style="width=200px; height: 300px;" />
+    <p>
+      <span style="font-weight: bold;">Choice: </span> <%= choice.title %>
+    </p>
+  <span class="crowdyresults">
+    <b> Chosen by 
+    <%= pluralize(choice.votecount, 'crowdster') %>
+    </b>
+  </span>
+  </div>
+<% end %>
+<div style="clear:both;" ></div>
+
+
+<%= link_to 'Edit', edit_crowdy_path(@crowdy) %> |
+<%= link_to 'Back', :action => "show" %>

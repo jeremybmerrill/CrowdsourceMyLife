@@ -1,0 +1,32 @@
+<h1>Listing crowdies</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Title</th>
+    <th>Question</th>
+    <th>Choice1</th>
+    <th>Choice2</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @crowdies.each do |crowdy| %>
+  <tr>
+    <td><%= crowdy.name %></td>
+    <td><%= crowdy.title %></td>
+    <td><%= crowdy.question %></td>
+    <% crowdy.choices.each do |choice| %>
+	<td><%= choice.title %>
+    <% end %>
+    <td><%= link_to 'Show', crowdy %></td>
+    <td><%= link_to 'Edit', edit_crowdy_path(crowdy) %></td>
+    <td><%= link_to 'Destroy', crowdy, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Crowdy', new_crowdy_path %>

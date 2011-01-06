@@ -1,0 +1,25 @@
+<p id="notice"><%= params[:notice] %></p>
+
+<h2 class="crowdytitle">
+  <%= @crowdy.title %>
+</h2>
+
+<p class="crowdyq">
+  <b>Question:</b>
+  <%= @crowdy.question %>
+</p>
+<% @crowdy.choices.each do |choice| %>
+  <div class="crowdychoice">
+    <img class="choiceimg" src=<%= choice.imgurl %> />
+    <p>
+      <span style="font-weight: bold;">Choice: </span> <%= choice.title %>
+    </p>
+  <% @votestr = "Vote for " +  choice.title %>
+  <%= button_to @votestr, {:controller => "crowdies", :action => "vote", :vote => choice.id}  %>
+  </div>
+<% end %>
+<div style="clear:both;" ></div>
+
+<%= link_to 'Edit', edit_crowdy_path(@crowdy) %> |
+<%= link_to 'Back', crowdies_path %> |
+<%= link_to 'Results', :controller => "crowdies", :action => "result", :id => @crowdy %>

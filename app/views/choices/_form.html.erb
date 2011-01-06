@@ -1,0 +1,14 @@
+<% @crowdy = Crowdy.find(params[:crowdy_id]) %>
+<%= form_for([@crowdy, @crowdy.choices.build]) do |c| %>
+  <div class="field">
+    <%= c.label :title %><br />
+    <%= c.text_field :title %>
+  </div>
+  <div class="field">
+    <%= c.label (:imgurl, "Image URL (optional)") %><br />
+    <%= c.text_field :imgurl %>
+  </div>
+  <div class="actions">
+    <%= c.submit %>
+  </div>
+<% end %>

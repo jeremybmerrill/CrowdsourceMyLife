@@ -1,0 +1,32 @@
+<%= form_for(@crowdy) do |f| %>
+  <% if @crowdy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@crowdy.errors.count, "error") %> prohibited this crowdy from being saved:</h2>
+
+      <ul>
+      <% @crowdy.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :name, "Enter a name for your crowdy (you're the only Crowdster who will see this!')" %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :title, "Enter a title for your crowdy -- this is what other Crowdsters will see" %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :question %><br />
+    <%= f.text_area :question %>
+  </div>
+  <div class="field">
+    <%= f.label :desired_crowd_choices, "How many Crowdsters' input would you like?" %><br />
+    <%= f.text_field :desired_crowd_choices %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
