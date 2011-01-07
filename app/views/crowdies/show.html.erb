@@ -8,14 +8,12 @@
   <b>Question:</b>
   <%= @crowdy.question %>
 </p>
-<% @crowdy.choices.each do |choice| %>
-  <div class="crowdychoice">
-    <img class="choiceimg" src=<%= choice.imgurl %> />
-    <p>
-      <span style="font-weight: bold;">Choice: </span> <%= choice.title %>
-    </p>
-  <% @votestr = "Vote for " +  choice.title %>
-  <%= button_to @votestr, {:controller => "crowdies", :action => "vote", :vote => choice.id}  %>
+<% @crowdy.choices.each do |@choice| %>
+  <%= render "crowdychoice" %>
+  <span class="crowdyvote">
+    <% @votestr = "Vote for " +  @choice.title %>
+    <%= button_to @votestr, {:controller => "crowdies", :action => "vote", :vote => @choice.id}  %>
+  </span>
   </div>
 <% end %>
 <div style="clear:both;" ></div>

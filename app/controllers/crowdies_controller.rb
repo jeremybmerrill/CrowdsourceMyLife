@@ -67,13 +67,16 @@ class CrowdiesController < ApplicationController
   # POST /crowdies.xml
   def create
     @crowdy = Crowdy.new(params[:crowdy])
-
+    #params[:choice].each do
+	    @crowdy.choices.build(params[:choice1])
+	    @crowdy.choices.build(params[:choice2])
+    #end
     if @crowdy.save
-      redirect_to(new_crowdy_choice_path(@crowdy), :notice => 'Crowdy was successfully created, now add the first choice...')
+      redirect_to :action => 'index'
     else
-      render :action => "new"
+      render :action => 'new'
     end
-  end
+ end
 
   # PUT /crowdies/1
   # PUT /crowdies/1.xml

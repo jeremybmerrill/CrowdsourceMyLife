@@ -1,5 +1,5 @@
 class ChoicesController < ApplicationController
-  def create
+  def create #unused, I think
     @crowdy = Crowdy.find(params[:crowdy_id])
     @choice = @crowdy.choices.create!(params[:choice]) #make this actually insert the damn thing...
     @len = @crowdy.choices.length

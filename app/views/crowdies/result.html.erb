@@ -9,15 +9,11 @@
   <%= @crowdy.question %>
 </p>
 
-<% @crowdy.choices.each do |choice| %>
-  <div class="crowdychoice">
-    <img src=<%= choice.imgurl %> style="width=200px; height: 300px;" />
-    <p>
-      <span style="font-weight: bold;">Choice: </span> <%= choice.title %>
-    </p>
+<% @crowdy.choices.each do |@choice| %>
+  <%= render "crowdychoice" %>
   <span class="crowdyresults">
     <b> Chosen by 
-    <%= pluralize(choice.votecount, 'crowdster') %>
+    <%= pluralize(@choice.votecount, 'crowdster') %>
     </b>
   </span>
   </div>
